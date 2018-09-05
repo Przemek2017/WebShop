@@ -4,8 +4,7 @@
     Author     : Przemek
 --%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
@@ -26,7 +25,7 @@
         <meta name="author" content="">
 
         <title>Online Shopping - ${title}</title>
-        
+
         <script>
             window.menu = '${title}';
         </script>
@@ -45,25 +44,25 @@
             <!-- Navigation -->
             <%@include file="./include/navbar.jsp"%>
             <!-- /.container -->
-
-            <!-- Page Content -->
-            <!-- When user click HOME -->
-            <c:if test="${userClickHome == true}">
-                <%@include file="home.jsp" %>
-            </c:if>
-            <!-- When user click PRODUCTS -->
-            <c:if test="${userClickProducts == true}">
-                <%@include file="products.jsp" %>
-            </c:if>
-            <!-- When user click ABOUT -->
-            <c:if test="${userClickAbout == true}">
-                <%@include file="about.jsp" %>
-            </c:if>
-            <!-- When user click CONTACT -->
-            <c:if test="${userClickContact == true}">
-                <%@include file="contact.jsp" %>
-            </c:if>
-
+            <div class="content">
+                <!-- Page Content -->
+                <!-- When user click HOME -->
+                <c:if test="${userClickHome == true}">
+                    <%@include file="home.jsp" %>
+                </c:if>
+                <!-- When user click PRODUCTS -->
+                <c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
+                    <%@include file="products.jsp" %>
+                </c:if>
+                <!-- When user click ABOUT -->
+                <c:if test="${userClickAbout == true}">
+                    <%@include file="about.jsp" %>
+                </c:if>
+                <!-- When user click CONTACT -->
+                <c:if test="${userClickContact == true}">
+                    <%@include file="contact.jsp" %>
+                </c:if>
+            </div>
             <!-- Footer -->
             <%@include file="./include/footer.jsp" %>
         </div>
@@ -75,6 +74,6 @@
 
         <!-- Menu JavaScript -->
         <script src="${js}/active_menu.js"></script>
-        
+
     </body>
 </html>

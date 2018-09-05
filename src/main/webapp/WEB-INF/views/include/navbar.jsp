@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li id="products">
-                        <a href="${contextRoot}/products">Products</a>
+                        <a href="${contextRoot}/shop/all/products">Products</a>
                     </li>
                     <li id="about">
                         <a href="${contextRoot}/about">About</a>
