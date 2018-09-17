@@ -1,5 +1,6 @@
 package com.pc.webstore.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,15 +21,19 @@ public class Product {
     private String code;
     private String name;
     private String brand;
+    @JsonIgnore
     private String description;
     @Column(name = "unit_price")
     private double unitPrice;
     private int quantity;
     @Column(name = "is_active")
+    @JsonIgnore
     private boolean active;
     @Column(name = "category_id")
+    @JsonIgnore
     private int categoryId;
     @Column(name = "supplier_id")
+    @JsonIgnore
     private int supplierId;
     private int purchases;
     private int views;

@@ -28,10 +28,14 @@
 
         <script>
             window.menu = '${title}';
+            window.contextRoot = '${contextRoot}';
         </script>
 
         <!-- Bootstrap Core CSS -->
         <link href="${css}/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Bootstrap DataTable CSS -->
+        <link href="${css}/dataTable.bootstrap.css" rel="stylesheet">
 
         <!-- Custom CSS -->
         <link href="${css}/myapp.css" rel="stylesheet">
@@ -62,6 +66,10 @@
                 <c:if test="${userClickContact == true}">
                     <%@include file="contact.jsp" %>
                 </c:if>
+                <!-- When user click SINGLE PRODUCT -->
+                <c:if test="${userClickShowSingleProduct == true}">
+                    <%@include file="singleProduct.jsp" %>
+                </c:if>
             </div>
             <!-- Footer -->
             <%@include file="./include/footer.jsp" %>
@@ -72,8 +80,17 @@
         <!-- Bootstrap Core JavaScript -->
         <script src="${js}/bootstrap.min.js"></script>
 
+        <!-- DataTables -->
+        <script src="${js}/jquery.dataTables.js"></script>
+
+        <!-- DataTables Bootstrap-->
+        <script src="${js}/dataTables.bootstrap.js"></script>
+
         <!-- Menu JavaScript -->
         <script src="${js}/active_menu.js"></script>
+
+        <!-- Table JavaScript -->
+        <script src="${js}/productsTable.js"></script>
 
     </body>
 </html>
