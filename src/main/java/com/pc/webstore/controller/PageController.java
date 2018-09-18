@@ -4,6 +4,10 @@ import com.pc.webstore.dao.CategoryDAO;
 import com.pc.webstore.dao.ProductDAO;
 import com.pc.webstore.dto.Category;
 import com.pc.webstore.dto.Product;
+import com.pc.webstore.exception.CategoryNotFoundException;
+import com.pc.webstore.exception.ProductNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PageController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(PageController.class);
+    
     @Autowired
     CategoryDAO categoryDAO;
 
@@ -29,6 +35,8 @@ public class PageController {
         mav.addObject("userClickHome", true);
         mav.addObject("title", "Home");
         mav.addObject("categories", categoryDAO.categories());
+        
+        LOGGER.info("PageController \"/\", \"/home\", \"/index\" =>");
         return mav;
     }
 
@@ -37,6 +45,8 @@ public class PageController {
         ModelAndView mav = new ModelAndView("page");
         mav.addObject("userClickProducts", true);
         mav.addObject("title", "Products");
+        
+        LOGGER.info("PageController /products =>");
         return mav;
     }
 
@@ -45,6 +55,8 @@ public class PageController {
         ModelAndView mav = new ModelAndView("page");
         mav.addObject("userClickAbout", true);
         mav.addObject("title", "About us");
+        
+        LOGGER.info("PageController /about =>");
         return mav;
     }
 
@@ -53,6 +65,8 @@ public class PageController {
         ModelAndView mav = new ModelAndView("page");
         mav.addObject("userClickContact", true);
         mav.addObject("title", "Contact us");
+        
+        LOGGER.info("PageController /contact =>");
         return mav;
     }
 
@@ -63,14 +77,18 @@ public class PageController {
         mav.addObject("title", "All Products");
         // list of categories
         mav.addObject("categories", categoryDAO.categories());
+        
+        LOGGER.info("PageController show/all/products =>");
         return mav;
     }
 
     @RequestMapping(value = {"show/category/{id}/products"})
-    public ModelAndView showCategoryProducts(@PathVariable("id") int id) {
+    public ModelAndView showCategoryProducts(@PathVariable("id") int id) throws CategoryNotFoundException{
         Category category = null;
         category = categoryDAO.get(id);
 
+        if (category == null) throw new CategoryNotFoundException();
+        
         ModelAndView mav = new ModelAndView("page");
         mav.addObject("userClickCategoryProducts", true);
         mav.addObject("title", category.getName());
@@ -78,12 +96,16 @@ public class PageController {
         mav.addObject("category", category);
         // list of categories
         mav.addObject("categories", categoryDAO.categories());
+        
+        LOGGER.info("PageController show/category/{id}/products =>");
         return mav;
     }
 
     @RequestMapping(value = {"show/{id}/product"})
-    public ModelAndView showSingleProduct(@PathVariable("id") int id) {
+    public ModelAndView showSingleProduct(@PathVariable("id") int id) throws ProductNotFoundException{
         Product product = productDAO.get(id);
+        
+        if (product == null) throw new ProductNotFoundException();
         
         product.setViews(product.getViews() + 1);
         productDAO.update(product);
@@ -92,7 +114,8 @@ public class PageController {
         mav.addObject("product", product);
         mav.addObject("title", product.getName());
         mav.addObject("userClickShowSingleProduct", true);
-
+        
+        LOGGER.info("PageController show/{id}/product =>");
         return mav;
     }
 }
