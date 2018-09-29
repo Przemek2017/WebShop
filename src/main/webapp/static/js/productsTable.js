@@ -11,7 +11,7 @@ if ($table.length) {
     }
 
     $table.DataTable({
-        lengthMenu: [[3, 10, 20, -1], ['3 Records', '10 Records', '20 Records', 'All', ]],
+        lengthMenu: [[5, 10, 20, -1], ['5 Records', '10 Records', '20 Records', 'All']],
         ajax: {
             url: jsonUrl,
             dataSrc: ''

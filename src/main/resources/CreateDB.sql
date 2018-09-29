@@ -47,7 +47,7 @@ CREATE TABLE `onlineshop`.`product` (
     `name` VARCHAR(50) NOT NULL , 
     `brand` VARCHAR(50) NOT NULL , 
     `description` VARCHAR(255) NOT NULL , 
-    `unit_price` DECIMAL NOT NULL , 
+    `unit_price` DECIMAL(10, 2) NOT NULL , 
     `quantity` INT NOT NULL , 
     `is_active` BOOLEAN NOT NULL , 
     `category_id` INT NOT NULL , 

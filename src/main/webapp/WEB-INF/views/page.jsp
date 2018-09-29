@@ -70,6 +70,10 @@
                 <c:if test="${userClickShowSingleProduct == true}">
                     <%@include file="singleProduct.jsp" %>
                 </c:if>
+                <!-- When user click MANAGE PRODUCT -->
+                <c:if test="${userClickManageProducts == true}">
+                    <%@include file="manageProducts.jsp" %>
+                </c:if>
             </div>
             <!-- Footer -->
             <%@include file="./include/footer.jsp" %>
@@ -92,5 +96,7 @@
         <!-- Table JavaScript -->
         <script src="${js}/productsTable.js"></script>
 
+        <!-- Alert JavaScript -->
+        <script src="${js}/alert.js"></script>
     </body>
 </html>

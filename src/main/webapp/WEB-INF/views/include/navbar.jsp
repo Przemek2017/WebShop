@@ -28,6 +28,9 @@
                     <li id="contact">
                         <a href="${contextRoot}/contact">Contact</a>
                     </li>
+                    <li id="manageProducts">
+                        <a href="${contextRoot}/manage/products">Magane Products</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
