@@ -90,8 +90,14 @@
         <!-- DataTables Bootstrap-->
         <script src="${js}/dataTables.bootstrap.js"></script>
 
+        <!-- Bootbox -->
+        <script src="${js}/bootbox.min.js"></script>
+
         <!-- Menu JavaScript -->
         <script src="${js}/active_menu.js"></script>
+        
+        <!-- jQuery validator -->
+        <script src="${js}/jquery.validate.js"></script>
 
         <!-- Table JavaScript -->
         <script src="${js}/productsTable.js"></script>
