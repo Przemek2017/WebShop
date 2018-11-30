@@ -181,13 +181,13 @@ if ($categoryForm.length) {
                 required: true
             }
         },
-        message: {
+        messages: {
             name: {
-                reqiured: 'Please add the category name',
+                required: 'Please add the category name',
                 minlength: 'The category name should not be less than 2'
             },
             description: {
-                reqiured: 'Please add a description for this category'
+                required: 'Please add a description for this category'
             }
         },
         errorElement: 'em',

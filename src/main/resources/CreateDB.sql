@@ -25,7 +25,7 @@ CREATE TABLE `onlineshop`.`user_detail` (
     `password` VARCHAR(50) NOT NULL , 
     `email` VARCHAR(50) NOT NULL , 
     `contact_number` VARCHAR(50) NOT NULL , 
-    CONSTRAINT pk_use_id PRIMARY KEY (`id`))
+    CONSTRAINT pk_use_id PRIMARY KEY (`id`)
 ) ENGINE = MyISAM;
 
 INSERT INTO `user_detail`(`first_name`, `last_name`, `role`, `enabled`, `password`, `email`, `contact_number`) 
@@ -51,7 +51,7 @@ CREATE TABLE `onlineshop`.`product` (
     `views` INT NOT NULL DEFAULT '0' , 
     CONSTRAINT pk_product_id PRIMARY KEY (`id`),
     CONSTRAINT fk_product_category_id FOREIGN KEY (category_id) REFERENCES category(id),
-    CONSTRAINT fk_product_supplier_id FOREIGN KEY (supplier_id) REFERENCES user_detail(id),
+    CONSTRAINT fk_product_supplier_id FOREIGN KEY (supplier_id) REFERENCES user_detail(id)
 ) ENGINE = MyISAM;
 
 INSERT INTO product (code, name, brand, description, unit_price, quantity, is_active, category_id, supplier_id, purchases, views)
