@@ -64,3 +64,29 @@ INSERT INTO product (code, name, brand, description, unit_price, quantity, is_ac
     VALUES ('PRDMNO123PQRX', ' Macbook Pro', 'apple', 'This is one of the best laptops available in the market right now!', 1800, 3, true, 3, 2, 0, 0 );
 INSERT INTO product (code, name, brand, description, unit_price, quantity, is_active, category_id, supplier_id, purchases, views)
     VALUES ('PRDABCXYZDEFX', 'Dell Latitude E6510', 'dell', 'This is one of the best laptop series from dell that can be used!', 850, 5, true, 3, 3, 0, 0 );
+
+/* ADDRESS */
+CREATE TABLE `onlineshop`.`address` ( 
+	id INT NOT NULL AUTO_INCREMENT,
+	user_id INT,
+	address_line_one VARCHAR(100),
+	address_line_two VARCHAR(100),
+	city VARCHAR(20),
+	state VARCHAR(20),
+	country VARCHAR(20),
+	postal_code VARCHAR(10),
+	is_billing BOOLEAN,
+	is_shipping BOOLEAN,
+	CONSTRAINT fk_address_user_id FOREIGN KEY (user_id) REFERENCES user_detail (id),
+	CONSTRAINT pk_address_id PRIMARY KEY (id)
+) ENGINE = MyISAM
+
+/* CART */ 
+CREATE TABLE `onlineshop`.`cart` ( 
+	id INT NOT NULL AUTO_INCREMENT,
+	user_id INT,
+	grand_total DECIMAL(10,2),
+	cart_lines INT,
+	CONSTRAINT fk_cart_user_id FOREIGN KEY (user_id) REFERENCES user_detail (id),
+	CONSTRAINT pk_cart_id PRIMARY KEY (id)
+) ENGINE = MyISAM

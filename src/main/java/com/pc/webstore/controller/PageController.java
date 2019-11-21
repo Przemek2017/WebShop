@@ -118,4 +118,16 @@ public class PageController {
         LOGGER.info("PageController show/{id}/product =>");
         return mav;
     }
+    
+    @RequestMapping(value = {"test"})
+    public ModelAndView showTest() {
+        ModelAndView mav = new ModelAndView("page");
+        mav.addObject("userClicktest", true);
+        mav.addObject("title", "TEST");
+        // list of categories
+        mav.addObject("categories", categoryDAO.categories());
+        
+        LOGGER.info("PageController test =>");
+        return mav;
+    }
 }

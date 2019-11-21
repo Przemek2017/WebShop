@@ -1,12 +1,12 @@
 // ********** Product list ***********
 
-let $table = $('#productsListTable');
+var $table = $('#productsListTable');
 if ($table.length) {
-    let jsonUrl = '';
+    var jsonUrl = '';
     if (window.categoryId == '') {
-        jsonUrl = `${window.contextRoot}/json/data/all/products`;
+        jsonUrl = '${window.contextRoot}/json/data/all/products';
     } else {
-        jsonUrl = `${window.contextRoot}/json/data/category/${window.categoryId}/products`;
+        jsonUrl = '${window.contextRoot}/json/data/category/${window.categoryId}/products';
     }
 
     $table.DataTable({
@@ -20,7 +20,7 @@ if ($table.length) {
             {
                 data: 'code',
                 mRender: function (data, type, row) {
-                    return `<img src="${window.contextRoot}/resources/images/${data}.jpg" class="productsView"/>`;
+                    return '<img src="${window.contextRoot}/resources/images/${data}.jpg" class="productsView"/>';
                 }
             },
             {
@@ -48,12 +48,12 @@ if ($table.length) {
                 data: 'id',
                 fSortable: false,
                 mRender: function (data, type, row) {
-                    let url = '';
-                    url += `<a href=${window.contextRoot}/show/${data}/product class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span><a/> &nbsp`;
+                    var url = ''
+                    url += '<a href=${window.contextRoot}/show/${data}/product class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span><a/> &nbsp';
                     if (row.quantity < 1) {
-                        url += `<a href=javascript:void(0) class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span><a/>`;
+                        url += '<a href=javascript:void(0) class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span><a/>';
                     } else {
-                        url += `<a href=${window.contextRoot}/card/add/${data}/product class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span><a/>`;
+                        url += '<a href=${window.contextRoot}/card/add/${data}/product class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span><a/>';
                     }
                     return url;
                 }
@@ -64,9 +64,9 @@ if ($table.length) {
 
 // ************** DataTable for Admin ************** 
 
-let $adminProductsTable = $('#adminProductsTable');
+var  $adminProductsTable = $('#adminProductsTable');
 if ($adminProductsTable.length) {
-    let jsonUrl = window.contextRoot + '/json/data/admin/all/products';
+    var  jsonUrl = window.contextRoot + '/json/data/admin/all/products';
     $adminProductsTable.DataTable({
         lengthMenu: [[10, 30, 50, -1], ['10 Records', '30 Records', '50 Records', 'All']],
         pageLength: 30,
@@ -81,7 +81,7 @@ if ($adminProductsTable.length) {
             {
                 data: 'code',
                 mRender: function (data, type, row) {
-                    return `<img src="${window.contextRoot}/resources/images/${data}.jpg" class="adminDataTableImg"/>`;
+                    return '<img src="${window.contextRoot}/resources/images/${data}.jpg" class="adminDataTableImg"/>';
                 }
             },
             {
@@ -109,15 +109,15 @@ if ($adminProductsTable.length) {
                 data: 'active',
                 fSortable: false,
                 mRender: function (data, type, row) {
-                    let url = '';
-                    url += `<label class="switch">`;
+                    var url = '';
+                    url += '<label class="switch">';
                     if (data) {
-                        url += `<input type="checkbox" checked="checked" value="${row.id}"/>`;
+                        url += '<input type="checkbox" checked="checked" value="${row.id}"/>';
                     } else {
-                        url += `<input type="checkbox" value="${row.id}"/>`;
+                        url += '<input type="checkbox" value="${row.id}"/>';
                     }
-                    url += `<div class="slider"></div>`;
-                    url += `</label>`;
+                    url += '<div class="slider"></div>';
+                    url += '</label>';
                     return url;
                 }
             },
@@ -125,21 +125,21 @@ if ($adminProductsTable.length) {
                 data: 'id',
                 fSortable: false,
                 mRender: function (data, type, row) {
-                    let str = '';
-                    str += `<a href="${window.contextRoot}/manage/${data}/product" class="btn btn-warning">`;
-                    str += `<span class="glyphicon glyphicon-pencil"></span></a>`;
+                    var str = '';
+                    str += '<a href="${window.contextRoot}/manage/${data}/product" class="btn btn-warning">';
+                    str += '<span class="glyphicon glyphicon-pencil"></span></a>';
                     return str;
                 }
             }
         ],
 
         initComplete: function () {
-            let api = this.api();
+            var api = this.api();
             api.$('.switch input[type="checkbox"]').on('change', function () {
-                let checkbox = $(this);
-                let checked = checkbox.prop('checked');
-                let dialogMessage = (checked) ? 'You want activate the product?' : 'You want deactivate the product?';
-                let value = checkbox.prop('value');
+                var checkbox = $(this);
+                var checked = checkbox.prop('checked');
+                var dialogMessage = (checked) ? 'You want activate the product?' : 'You want deactivate the product?';
+                var value = checkbox.prop('value');
 
                 bootbox.confirm({
                     size: 'medium',
@@ -149,7 +149,7 @@ if ($adminProductsTable.length) {
                         if (confirmed) {
                             console.log(value);
 
-                            let activationUrl = `${window.contextRoot}/manage/product/${value}/activation`;
+                            var activationUrl = '${window.contextRoot}/manage/product/${value}/activation';
 
                             $.post(activationUrl, function (data) {
                                 bootbox.alert({
@@ -169,7 +169,7 @@ if ($adminProductsTable.length) {
 }
 //    Category validation
 
-let $categoryForm = $('#categoryForm');
+var $categoryForm = $('#categoryForm');
 if ($categoryForm.length) {
     $categoryForm.validate({
         rules: {
